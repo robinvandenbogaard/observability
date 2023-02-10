@@ -9,3 +9,8 @@ scrape_configs:
       - targets:
           - 'prometheus:9090'
           - 'idonotexists:564'
+  - job_name: quarkus-apps
+    metrics_path: /q/metrics
+    static_configs:
+      - targets:
+          - 'quarkus-app:8080'
