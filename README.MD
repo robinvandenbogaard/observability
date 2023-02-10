@@ -1,6 +1,6 @@
 # Usage
 
-First build the runnable jars for quarkus and spring
+First build the runnable jars for Quarkus and Spring
 ```bash
 mvn package
 ```
@@ -16,9 +16,9 @@ Open http://localhost:9000 to open the Prometheus explorer. Search for metrics, 
  - jvm_memory_committed_bytes
  - jvm_memory_max_bytes
 
-For all **quarkus** metrics visit http://localhost:8000/q/metrics
+For all **Quarkus** metrics visit http://localhost:8000/q/metrics
 
-For all **spring** metrics visit http://localhost:8001/actuator/prometheus
+For all **Spring** metrics visit http://localhost:8001/actuator/prometheus
 
 The Prometheus instance has been configured to scrape both applications. You can find this configuration in [prometheus.yml](prometheus/prometheus.yml).
 
@@ -33,6 +33,45 @@ _Both Quarkus and Spring use Micrometer as default metric provider._
 
 The Grafana instance has been configured with the Prometheus server as datasource. 
 You can find this configuration in [prometheus_ds.yml](grafana/provisioning/datasources/prometheus_ds.yml).
+
+## Application config
+
+### Quarkus
+
+To get Quarkus to expose metrics add the following dependency:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
+    </dependency>
+</dependencies>
+```
+
+### Spring
+
+To get Spring to expose metrics add the following dependencies:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-registry-prometheus</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
+```
+
+and the following property:
+
+```properties
+management.endpoints.web.exposure.include=prometheus
+```
 
 # Sources
 
