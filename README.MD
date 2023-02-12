@@ -31,6 +31,8 @@ However if you import the [JVM (Micrometer)](https://grafana.com/grafana/dashboa
 You can start monitoring resource usage from both apps.
 _Both Quarkus and Spring use Micrometer as default metric provider._
 
+Also add dashboards with id: 12962 for monitoring Axon
+
 The Grafana instance has been configured with the Prometheus server as datasource. 
 You can find this configuration in [prometheus_ds.yml](grafana/provisioning/datasources/prometheus_ds.yml).
 

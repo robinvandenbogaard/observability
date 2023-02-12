@@ -33,7 +33,7 @@ services:
     image: axoniq/axonserver
     ports:
       - 4000:8024
-      - 4001:8124
+      - 8124:8124
     volumes:
         - axonserver-data:/data
         - axonserver-events:/eventdata
