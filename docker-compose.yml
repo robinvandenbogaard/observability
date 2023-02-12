@@ -29,7 +29,18 @@ services:
     volumes:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - grafana-data:/var/lib/grafana
-
+  axon:
+    image: axoniq/axonserver
+    ports:
+      - 4000:8024
+      - 4001:8124
+    volumes:
+        - axonserver-data:/data
+        - axonserver-events:/eventdata
+        - axonserver-config:/config:ro
 volumes:
   prometheus-data:
   grafana-data:
+  axonserver-data:
+  axonserver-events:
+  axonserver-config:

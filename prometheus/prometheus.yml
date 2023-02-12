@@ -19,3 +19,4 @@ scrape_configs:
     static_configs:
       - targets:
           - 'spring-app:8080'
+          - 'axon:8024'
